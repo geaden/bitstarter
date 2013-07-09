@@ -6,11 +6,11 @@ var app = express.createServer(express.logger());
 
 fs.readFileSync('index.html', function(err, data) {
     if (err) throw err;
-    var buffer = new Buffer(data);
+    var buffer = new Buffer(data, "utf8");
 });
 
 app.get('/', function(request, response) {
-    response.send(buffer.toString());
+    response.send(buffer.toString("utf8"));
 });
 
 var port = process.env.PORT || 5000;
